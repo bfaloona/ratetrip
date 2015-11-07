@@ -57,10 +57,20 @@ module Ratetrip
 
     get :rate, map: '/:driver_id' do
 
-      "How was your trip?"
-      @driver = {id: params[:driver_id]}
-      render 'rate', layout: :application
-    end
+      # drivers = {123: 'Wade', 456: 'Brandon'}
+      driver_id = params[:driver_id]
 
+      if driver_id == '123'
+        @title = "How was your trip with Brandon?"
+
+      elsif driver_id == '456'
+        @title = "How was your trip with Brandon?"
+      else
+        halt 500, "Error"
+      end
+
+      render 'rate', layout: :application
+
+    end
   end
 end
