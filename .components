@@ -1,0 +1,9 @@
+---
+:orm: none
+:test: minitest
+:mock: none
+:script: jquery
+:renderer: haml
+:stylesheet: none
+:namespace: Ratetrip
+:migration_format: number
