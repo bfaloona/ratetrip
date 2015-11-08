@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "drivers", force: :cascade do |t|
     t.string   "name"
-    t.string  "permit_number"
+    t.string   "permit_number"
     t.string   "email"
     t.string   "photo"
     t.datetime "created_at"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 3) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer  "driver"
+    t.integer  "driver_id"
     t.integer  "quality"
     t.string   "comments"
     t.string   "suggestions"
     t.boolean  "delivered"
-    t.integer  "status"
+    t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

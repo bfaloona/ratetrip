@@ -5,6 +5,42 @@ module Ratetrip
 
     enable :sessions
 
+    if Padrino.env.to_s == 'production'
+      set :delivery_method, smtp: {
+        address: 'smtp.sendgrid.net',
+        port: '587',
+        domain: 'heroku.com',
+        user_name: ENV['SENDGRID_USERNAME'],
+        password: ENV['SENDGRID_PASSWORD'],
+        authentication: :plain,
+        enable_starttls_auto: true
+      }
+    else
+      set :delivery_method, file: {location: "#{Padrino.root}/tmp/emails"}
+      require 'pry'
+    end
+
+    get '/oops' do
+      render 'errors/500'
+    end
+
+    get '/' do
+      "Welcome to RateTrip, brought to you by TaxiTalk.info"
+    end
+
+    not_found do
+      render  'errors/404', layout: false
+    end
+
+    error 500 do
+      render  'errors/500', layout: false
+    end
+
+    get '/info' do
+      redirect 'http://taxitalk.info'
+    end
+
+
     ##
     # Caching support.
     #
@@ -15,14 +51,14 @@ module Ratetrip
     #
     # set :cache, Padrino::Cache.new(:LRUHash) # Keeps cached values in memory
     # set :cache, Padrino::Cache.new(:Memcached) # Uses default server at localhost
-    # set :cache, Padrino::Cache.new(:Memcached, :server => '127.0.0.1:11211', :exception_retry_limit => 1)
-    # set :cache, Padrino::Cache.new(:Memcached, :backend => memcached_or_dalli_instance)
+    # set :cache, Padrino::Cache.new(:Memcached, server: '127.0.0.1:11211', exception_retry_limit: 1)
+    # set :cache, Padrino::Cache.new(:Memcached, backend: memcached_or_dalli_instance)
     # set :cache, Padrino::Cache.new(:Redis) # Uses default server at localhost
-    # set :cache, Padrino::Cache.new(:Redis, :host => '127.0.0.1', :port => 6379, :db => 0)
-    # set :cache, Padrino::Cache.new(:Redis, :backend => redis_instance)
+    # set :cache, Padrino::Cache.new(:Redis, host: '127.0.0.1', port: 6379, db: 0)
+    # set :cache, Padrino::Cache.new(:Redis, backend: redis_instance)
     # set :cache, Padrino::Cache.new(:Mongo) # Uses default server at localhost
-    # set :cache, Padrino::Cache.new(:Mongo, :backend => mongo_client_instance)
-    # set :cache, Padrino::Cache.new(:File, :dir => Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
+    # set :cache, Padrino::Cache.new(:Mongo, backend: mongo_client_instance)
+    # set :cache, Padrino::Cache.new(:File, dir: Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
     #
 
     ##
@@ -50,27 +86,5 @@ module Ratetrip
     #   end
     #
 
-
-    get '/' do
-      "Welcome to RateTrip, brought to you by TaxiTalk.info"
-    end
-
-    get :rate, map: '/:driver_id' do
-
-      # drivers = {123: 'Wade', 456: 'Brandon'}
-      driver_id = params[:driver_id]
-
-      if driver_id == '123'
-        @title = "How was your trip with Brandon?"
-
-      elsif driver_id == '456'
-        @title = "How was your trip with Brandon?"
-      else
-        halt 500, "Error"
-      end
-
-      render 'rate', layout: :application
-
-    end
   end
 end

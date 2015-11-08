@@ -38,18 +38,15 @@
 #
 # and then all delivered mail will use these settings unless otherwise specified.
 #
+Ratetrip::App.mailer :rating do
 
-Ratetrip::App.mailer :notifier do
-
-email :rate_email do |driver, rating, comment|
-  from 'ratetrip@taxitalk.info'
-  to   'wade@wadehudson.net'
-  subject 'Taxi Trip Rated!'
-  locals  :driver => driver
-  content_type 'text/html'       # optional, defaults to plain/text
-  via     :sendmail              # optional, to smtp if defined, otherwise sendmail
-  render  'rate_email'
-end
-
+  email :notify do |driver_name, quality, comments, suggestions|
+    from 'ratetrip@taxitalk.info'
+    to   'brandon@faloona.net'
+    subject 'Taxi Trip Was Rated!'
+    locals  driver_name: driver_name, quality: quality, comments: comments, suggestions: suggestions
+    content_type 'text/html'       # optional, defaults to plain/text
+    render  'rating'
+  end
 
 end

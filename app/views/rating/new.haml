@@ -6,7 +6,8 @@
 	.col-xs-2
 
 	.col-xs-8
-		=form_for :rating, url(:rating, :create, :format => :js), remote: true do |f|
+		=form_for :rating, url(:rating, :create) do |f|
+			= hidden_field_tag :permit_number, value: @permit_number
 			.content
 				.rating
 					= label_tag :quality, :class => 'first'

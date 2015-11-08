@@ -5,7 +5,7 @@ describe "Controller" do
     get "/"
   end
 
-  it "should return hello world text" do
-    assert_equal "Hello World", last_response.body
+  it "should return welcome message" do
+    last_response.body.split('Welcome to RateTrip').count.must_equal 2
   end
 end

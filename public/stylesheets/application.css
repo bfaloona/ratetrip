@@ -5,3 +5,16 @@
 .body {
     font-size: 42px;
 }
+
+.ratings-list {
+    padding: 10px;
+}
+
+.ratings-list td {
+    padding: 5px;
+}
+
+.ratings-list th {
+    font-weight: bold;
+    padding-right: 15px;
+}

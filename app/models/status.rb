@@ -1,4 +1,5 @@
 class Status < ActiveRecord::Base
-  validates_presence_of :description
+  has_many :rating
 
+  validates_presence_of :description
 end
