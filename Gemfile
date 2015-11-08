@@ -1,35 +1,41 @@
 source 'https://rubygems.org'
 
 # Padrino supports Ruby version 1.9 and later
-# ruby '2.2.1'
-
-# Distribute your app as a gem
-# gemspec
-
-# Server requirements
-# gem 'thin' # or mongrel
-# gem 'trinidad', :platform => 'jruby'
-
-# Optional JSON codec (faster performance)
-# gem 'oj'
+ruby '2.2.1'
 
 # Project requirements
 gem 'rake'
 
-# Component requirements
-gem 'haml'
-
-# Test requirements
-gem 'minitest', :require => 'minitest/autorun', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
-
 # Padrino Stable Gem
 gem 'padrino', '0.13.0'
 
-# Or Padrino Edge
-# gem 'padrino', :github => 'padrino/padrino-framework'
+# Component requirements
+gem 'activerecord', '>= 3.1', require: 'active_record'
+gem 'haml'
+gem 'pg'
+gem 'bcrypt'
 
-# Or Individual Gems
-# %w(core support gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.13.0'
-# end
+# Test requirements
+group :test do
+
+  gem 'minitest', require: 'minitest/autorun'
+  gem 'minitest-reporters', require: false
+  gem 'mocha', require: false
+  gem 'rack-test', require: 'rack/test'
+
+  # rest-client for http calls
+  gem 'rest-client', require: false
+
+  #gem 'autotest', require: false
+
+  # guard runs tests
+  gem 'guard'
+  gem 'guard-minitest', require: false
+  gem 'terminal-notifier-guard', require: false
+  gem 'rb-fsevent', require: false
+
+  # pry for debugging
+  gem 'pry', require: false
+  gem 'pry-padrino', require: false
+
+end

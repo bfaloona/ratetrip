@@ -1,0 +1,22 @@
+.container
+	.col-xs10
+		=@title
+
+.container
+	.col-xs-2
+
+	.col-xs-8
+		=form_for :rating, url(:rating, :create, :format => :js), remote: true do |f|
+			.content
+				.rating
+					= label_tag :quality, :class => 'first'
+					= text_field_tag :quality
+				.comments
+					= label_tag :comments, :class => 'first'
+					= text_field_tag :comments
+				.suggestions
+					= label_tag :suggestions, :class => 'first'
+					= text_field_tag :suggestions
+				.button
+					= field_set_tag(:class => 'buttons') do
+						= submit_tag "Done"
