@@ -29,7 +29,6 @@ Ratetrip::App.controllers :rating do
 
   get :new, map: '/:permit_number' do
     driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error" )
-    binding.pry
     @title = "How was your trip with #{driver.name}?"
     @permit_number = params[:permit_number]
     render 'rating/new', layout: :application
@@ -37,7 +36,6 @@ Ratetrip::App.controllers :rating do
 
   post :create  do
     driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error" )
-    # binding.pry
     @rating = Rating.new( {
       driver_id: driver.id,
       quality: params[:quality],
