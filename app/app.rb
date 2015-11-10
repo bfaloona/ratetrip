@@ -20,12 +20,14 @@ module Ratetrip
       require 'pry'
     end
 
+    layout :application
+
     get '/oops' do
       render 'errors/500'
     end
 
     get '/' do
-      "Welcome to RateTrip, brought to you by TaxiTalk.info"
+      render :haml, "Welcome to RateTrip, brought to you by TaxiTalk.info"
     end
 
     not_found do

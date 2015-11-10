@@ -29,7 +29,7 @@ Ratetrip::App.controllers :rating do
 
   get :new, map: '/:permit_number' do
     driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error" )
-    @title = "How was your trip with #{driver.name}?"
+    @title = "Rate This Trip"
     @permit_number = params[:permit_number]
     render 'rating/new', layout: :application
   end

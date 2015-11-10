@@ -1,0 +1,25 @@
+.result-summary
+	=@result_summary
+
+
+- if @ratings.empty?
+	.empty-table-message
+		well, there are no ratings to display.
+- else
+
+	%table.ratings-list
+		%thead
+			%tr
+				%th.header Driver
+				%th.header Rating
+				%th.header Comments
+				%th.header Suggestions
+
+		%tbody
+			- @ratings.each_with_index do |rating, index|
+
+				%tr{class: (index.even? ? 'even' : 'odd')}
+					%td.driver=rating.driver.name
+					%td.quality=rating.quality
+					%td.comment-text=rating.comments
+					%td.comment-text=rating.suggestions

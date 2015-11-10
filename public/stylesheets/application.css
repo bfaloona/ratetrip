@@ -3,7 +3,7 @@
 }
 
 .body {
-    font-size: 42px;
+    font-size: 36px;
 }
 
 .ratings-list {
@@ -17,4 +17,83 @@
 .ratings-list th {
     font-weight: bold;
     padding-right: 15px;
+}
+
+.logo {
+    width: auto;
+}
+
+.rate-trip-row {
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.top-row {
+    background-color: lightgreen;
+    padding: 5px;
+    padding-bottom: 20px;
+    height: 5em;
+}
+
+.rating-row {
+}
+
+.quality-select {
+    -webkit-appearance: none;
+    font-size: .8em;
+}
+
+.driver-photo img {
+    height: 90px;
+}
+.text-label {
+    font-size: 0.7em;
+    margin-left: -10px;
+    font-weight: bold;
+}
+
+.text-label.driver-name {
+    font-size: 0.6em;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.text-label.permit-number {
+    font-size: 0.6em;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.comment-row textarea {
+    max-width: 100%;
+}
+
+.done-button-row {
+    padding-bottom: 20px;
+}
+
+.icon-comment-o {
+    font-size: 2.7em;
+}
+
+.icon-taxi {
+    font-size: 1em;
+    padding-top: 0.35em;
+    padding-left: 0.78em;
+}
+
+.title {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0.6em;
+}
+
+.footer-row {
+    background-color: lightgreen;
+    padding: 5px;
+    font-size: 90%;
+    text-align: center;
+    /*position: absolute;*/
+    margin-bottom: 0;
 }
