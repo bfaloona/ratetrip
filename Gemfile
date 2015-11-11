@@ -14,6 +14,7 @@ gem 'activerecord', '>= 3.1', require: 'active_record'
 gem 'haml'
 gem 'pg'
 gem 'bcrypt'
+gem 'rqrcode'
 
 # Test requirements
 group :test do

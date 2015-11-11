@@ -46,6 +46,9 @@
 .driver-photo img {
     height: 90px;
 }
+.qr-code img {
+    height: 90px;
+}
 .text-label {
     font-size: 0.7em;
     margin-left: -10px;

@@ -1,0 +1,54 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:statuses, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:statuses, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:statuses, :destroy_many), :method => :delete do
+                      =hidden_field_tag :status_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:status, :id)
+        %th.header= mat(:status, :description)
+        %th.header= mat(:status, :created_at)
+        %th.header= mat(:status, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@statuses.each do |status|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'status_ids[]', :value => status.id, :class => 'list-selectable-checkbox'
+          %td.list-column=status.id
+          %td.list-column=status.description
+          %td.list-column=time_ago_in_words status.created_at
+          %td.list-column=time_ago_in_words status.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:statuses, :edit, :id => status.id), :rel => :tooltip, :title => "#{pat(:edit)} status", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} status", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "status")
+                .popover-content
+                  = form_tag url(:statuses, :destroy, :id => status.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

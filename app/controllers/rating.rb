@@ -28,19 +28,21 @@ Ratetrip::App.controllers :rating do
   end
 
   get :new, map: '/:permit_number' do
-    driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error" )
+    driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error! Could not look up driver for permit_number #{params[:permit_number]}" )
     @title = "Rate This Trip"
-    @permit_number = params[:permit_number]
+    @permit_number = driver.permit_number
+    @driver = driver
+
     render 'rating/new', layout: :application
   end
 
   post :create  do
-    driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error" )
+    driver = Driver.where(permit_number: params[:rating][:permit_number])[0]
     @rating = Rating.new( {
       driver_id: driver.id,
-      quality: params[:quality],
-      comments: params[:comments],
-      suggestions: params[:suggestions]
+      quality: params[:rating][:quality],
+      comments: params[:rating][:comments],
+      status_id: 1
     })
 
     if @rating.valid?
@@ -54,7 +56,7 @@ Ratetrip::App.controllers :rating do
     @rating.delivered = true
     @rating.save
 
-    redirect '/rating'
+    render 'rating/thanks', layout: :application
   end
 
 

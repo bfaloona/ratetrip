@@ -1,0 +1,60 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:drivers, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:drivers, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:drivers, :destroy_many), :method => :delete do
+                      =hidden_field_tag :driver_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:driver, :id)
+        %th.header= mat(:driver, :name)
+        %th.header= mat(:driver, :permit_number)
+        %th.header= mat(:driver, :email)
+        %th.header= mat(:driver, :photo)
+        %th.header= mat(:driver, :created_at)
+        %th.header= mat(:driver, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@drivers.each do |driver|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'driver_ids[]', :value => driver.id, :class => 'list-selectable-checkbox'
+          %td.list-column=driver.id
+          %td.list-column=driver.name
+          %td.list-column=driver.permit_number
+          %td.list-column=driver.email
+          %td.list-column=driver.photo
+          %td.list-column=time_ago_in_words driver.created_at
+          %td.list-column=time_ago_in_words driver.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:drivers, :edit, :id => driver.id), :rel => :tooltip, :title => "#{pat(:edit)} driver", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} driver", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "driver")
+                .popover-content
+                  = form_tag url(:drivers, :destroy, :id => driver.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

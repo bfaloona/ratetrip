@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:drivers, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:drivers, :new)
+  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:drivers, :edit, :id => @driver.id)
+
+.tabs-content
+  = form_for :driver, url(:drivers, :update, :id => @driver.id), :method => :put, :class => 'form-horizontal' do |f|
+    =partial 'drivers/form', :locals => { :f => f }

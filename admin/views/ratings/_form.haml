@@ -1,0 +1,43 @@
+- error = @rating.errors.include?(:driver_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :driver_id, :class => 'control-label'
+  .controls
+    =f.text_field :driver_id, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:driver_id, :class => 'text-error') : pat(:example)
+- error = @rating.errors.include?(:quality)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :quality, :class => 'control-label'
+  .controls
+    =f.text_field :quality, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:quality, :class => 'text-error') : pat(:example)
+- error = @rating.errors.include?(:comments)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :comments, :class => 'control-label'
+  .controls
+    =f.text_field :comments, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:comments, :class => 'text-error') : pat(:example)
+- error = @rating.errors.include?(:suggestions)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :suggestions, :class => 'control-label'
+  .controls
+    =f.text_field :suggestions, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:suggestions, :class => 'text-error') : pat(:example)
+- error = @rating.errors.include?(:delivered)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :delivered, :class => 'control-label'
+  .controls
+    =f.check_box :delivered, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:delivered, :class => 'text-error') : pat(:example)
+- error = @rating.errors.include?(:status_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :status_id, :class => 'control-label'
+  .controls
+    =f.text_field :status_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:status_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:ratings, :index), :class => 'btn btn-default'

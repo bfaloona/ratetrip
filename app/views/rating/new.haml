@@ -9,6 +9,7 @@
 			.title=@title
 
 =form_for :rating, url(:rating, :create), class: 'rating_form' do |f|
+	=f.hidden_field :permit_number, value: @driver.permit_number
 	.container-fluid
 		.row.rate-trip-row.permit-number-row
 			.col-xs-3
@@ -16,12 +17,12 @@
 					Driver
 			.col-xs-4
 				.driver-photo
-					%img{src: '/images/drivers/whudson.jpg'}
+					=image_tag '/images/drivers/' + @driver.photo
 			.col-xs-5
 				.text-label.driver-name
-					Wade Hudson
+					=@driver.name
 				.text-label.permit-number
-					= @permit_number
+					= @driver.permit_number
 		.row.rate-trip-row.rating-row
 			.col-xs-3
 				.text-label
