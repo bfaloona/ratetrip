@@ -40,11 +40,11 @@
 #
 Ratetrip::App.mailer :rating do
 
-  email :notify do |driver_name, quality, comments, suggestions|
+  email :notify do |driver_name, quality, comments|
     from 'ratetrip@taxitalk.info'
-    to   'brandon@faloona.net'
+    to   'wade@wadehudson.net,brandon@faloona.net'
     subject 'Taxi Trip Was Rated!'
-    locals  driver_name: driver_name, quality: quality, comments: comments, suggestions: suggestions
+    locals  driver_name: driver_name, quality: quality, comments: comments
     content_type 'text/html'       # optional, defaults to plain/text
     render  'rating'
   end

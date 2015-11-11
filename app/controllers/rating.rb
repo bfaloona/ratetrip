@@ -52,9 +52,11 @@ Ratetrip::App.controllers :rating do
       raise 'Error creating rating'
     end
 
-    deliver( :rating, :notify, driver.name, @rating.quality, @rating.comments, @rating.suggestions)
+    deliver( :rating, :notify, driver.name, @rating.quality, @rating.comments)
     @rating.delivered = true
     @rating.save
+
+    @title = 'Complete!'
 
     render 'rating/thanks', layout: :application
   end
