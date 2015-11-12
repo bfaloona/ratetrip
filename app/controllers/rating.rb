@@ -36,12 +36,12 @@ Ratetrip::App.controllers :rating do
     render 'rating/new', layout: :application
   end
 
-  post :create  do
-    driver = Driver.where(permit_number: params[:rating][:permit_number])[0]
+  post :create, csrf_protection: false   do
+    driver = Driver.where(permit_number: params[:permit_number])[0]
     @rating = Rating.new( {
       driver_id: driver.id,
-      quality: params[:rating][:quality],
-      comments: params[:rating][:comments],
+      quality: params[:quality],
+      comments: params[:comments],
       status_id: 1
     })
 
@@ -56,7 +56,7 @@ Ratetrip::App.controllers :rating do
     @rating.delivered = true
     @rating.save
 
-    @title = 'Complete!'
+    @title = 'Rating Complete!'
 
     render 'rating/thanks', layout: :application
   end

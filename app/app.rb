@@ -27,7 +27,7 @@ module Ratetrip
     end
 
     get '/' do
-      render :haml, "Welcome to RateTrip, brought to you by TaxiTalk.info"
+      render 'home'
     end
 
     not_found do

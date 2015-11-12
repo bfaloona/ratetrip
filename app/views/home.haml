@@ -1,0 +1,39 @@
+.container-fluid
+	.row.rate-trip-row.top-row
+		.col-xs-3
+			%span.logo.icon-stack.icon-lg
+				%i.logo.icon.icon-comment-o.icon-stack-2x
+				%i.logo.icon.icon-taxi.icon-stack-1x
+
+		.col-xs-9
+			.title-long
+				How to use
+				%br
+				Rate This Trip
+
+	.container-fluid
+		.row.rate-trip-row
+			.col-xs-3.left-column.qrcode-badge
+				= image_tag '/images/drivers/1229.png'
+			.col-xs-9
+				.text-label
+					Scan the 'Rate This Trip' card with a QR Code scanner during your taxi ride
+					%br
+		.row.rate-trip-row
+			.col-xs-3.left-column.star-badge
+				%i.icon.icon-star.icon-stack-2x
+			.col-xs-9
+				.text-label
+					Click a star icon to rate your trip on overall quality
+					%br
+		.row.rate-trip-row
+			.col-xs-3.left-column.button-badge
+				=button_tag 'Done', disabled: :disabled
+			.col-xs-9
+				.text-label
+					Click Done, and that's it!
+		.row.rate-trip-row.footer-row
+			.footer-title
+				%a{href: 'http://taxitalk.info'} TaxiTalk.info
+			.footer-subtitle
+				promoting better taxis

@@ -8,52 +8,36 @@
 		.col-xs-9
 			.title=@title
 
-=form_for :rating, url(:rating, :create), class: 'rating_form' do |f|
-	=f.hidden_field :permit_number, value: @driver.permit_number
 	.container-fluid
-		.row.rate-trip-row.permit-number-row
-			.col-xs-3
-				.text-label
-					Driver
-			.col-xs-4
-				.driver-photo
-					=image_tag '/images/drivers/' + @driver.photo
-			.col-xs-5
-				.text-label.driver-name
-					=@driver.name
-				.text-label.permit-number
-					= @driver.permit_number
-		.row.rate-trip-row.rating-row
-			.col-xs-3
-				.text-label
-					Quality
-			.col-xs-9
-				<div class="stars">
-				<input class="star star-5" id="star-5" type="radio" name="star"/>
-				<label class="star star-5" for="star-5"></label>
-				<input class="star star-4" id="star-4" type="radio" name="star"/>
-				<label class="star star-4" for="star-4"></label>
-				<input class="star star-3" id="star-3" type="radio" name="star"/>
-				<label class="star star-3" for="star-3"></label>
-				<input class="star star-2" id="star-2" type="radio" name="star"/>
-				<label class="star star-2" for="star-2"></label>
-				<input class="star star-1" id="star-1" type="radio" name="star"/>
-				<label class="star star-1" for="star-1"></label>
-				</div>
-				= f.hidden_field(:quality, value: '0')
-		.row.rate-trip-row.comment-row
-			.col-xs-3
-				.text-label
-					Comments
-			.col-xs-9
-				= f.text_area :comments
-		.row.rate-trip-row.done-button-row
-			.col-xs-3
-			.col-xs-9
-				= f.submit "Done"
+		=form_tag url(:rating, :create), class: 'rating_form' do
+			=hidden_field_tag :permit_number, value: @driver.permit_number
+			.row.rate-trip-row.permit-number-row
+				.col-xs-4
+					.driver-photo
+						=image_tag '/images/drivers/' + @driver.photo
+				.col-xs-8
+					.text-label.driver-name
+						=@driver.name
+					.text-label.permit-number
+						=@driver.permit_number
+			.row.rate-trip-row.rating-row
+				.col-xs-12
+					.stars
+						<input name="quality" id="star-rating" type="number" class="rating" min="1" max="5" step="1" data-size="sm"
+						data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
 
-		.row.rate-trip-row.footer-row
-			.footer-title
-				%a{href: 'http://taxitalk.info'} TaxiTalk.info
-			.footer-subtitle
-				promoting better taxis
+						%script{type: 'text/javascript'}
+							$("#star-rating").rating({'size':'lg', 'showClear':'false', 'showCaption':'false'});
+
+			.row.rate-trip-row.comment-row
+				.col-xs-12
+					= text_area_tag :comments, placeholder: 'Enter your comments about this trip', rows: 3
+			.row.rate-trip-row.done-button-row
+				.col-xs-12
+					= submit_tag "Done"
+
+			.row.rate-trip-row.footer-row
+				.footer-title
+					%a{href: 'http://taxitalk.info'} TaxiTalk.info
+				.footer-subtitle
+					promoting better taxis

@@ -1,5 +1,5 @@
 class Driver < ActiveRecord::Base
-  has_many :ratings
+  has_many :ratings, dependent: :delete_all
 
   validates_presence_of :name
   validates_presence_of :permit_number

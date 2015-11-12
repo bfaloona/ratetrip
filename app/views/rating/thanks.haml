@@ -6,24 +6,21 @@
 				%i.logo.icon.icon-taxi.icon-stack-1x
 
 		.col-xs-9
-			.title=@title
+			.title-long
+				.title=@title
 
 	.container-fluid
 		.row.rate-trip-row
-			%br
-			%br
-			%br
 			.text-label
 				Thank you for your rating
-			%br
-			%br
-			%br
-			%br
-			%br
-			%br
+		.row.rate-trip-row
+			.text-label
+				%a{href: 'http://taxitalk.info'}
+					Subscribe
+				to TaxiTalk.info
 		.row.rate-trip-row.footer-row
 			.footer-title
-				%a{href: 'http://taxitalk.info'}Subscribe
-				to TaxiTalk.info
+				%a{href: 'http://taxitalk.info'} TaxiTalk.info
 			.footer-subtitle
 				promoting better taxis
+
