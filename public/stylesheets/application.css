@@ -40,6 +40,7 @@
 }
 
 .rating-row {
+    font-size: 83%;
 }
 
 .driver-photo img {
@@ -111,7 +112,7 @@
 }
 
 .title-long {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     text-align: center;
     padding-top: 0.3em;

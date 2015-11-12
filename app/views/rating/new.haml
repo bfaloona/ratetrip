@@ -11,11 +11,10 @@
 	.container-fluid
 		=form_tag url(:rating, :create), class: 'rating_form' do
 			=hidden_field_tag :permit_number, value: @driver.permit_number
-			.row.rate-trip-row.permit-number-row
-				.col-xs-4
-					.driver-photo
-						=image_tag '/images/drivers/' + @driver.photo
-				.col-xs-8
+			.row.rate-trip-row
+				.col-xs-5.driver-photo
+					=image_tag '/images/drivers/' + @driver.photo
+				.col-xs-7
 					.text-label.driver-name
 						=@driver.name
 					.text-label.permit-number
@@ -23,11 +22,10 @@
 			.row.rate-trip-row.rating-row
 				.col-xs-12
 					.stars
-						<input name="quality" id="star-rating" type="number" class="rating" min="1" max="5" step="1" data-size="sm"
-						data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
+						<input name="quality" id="star-rating" type="number" class="rating" data-min=0 data-max=5 data-step=1 data-stars=5 data-size="sm" data-showclear="false" data-showcaption="false" data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
 
 						%script{type: 'text/javascript'}
-							$("#star-rating").rating({'size':'lg', 'showClear':'false', 'showCaption':'false'});
+							$("#star-rating").rating({});
 
 			.row.rate-trip-row.comment-row
 				.col-xs-12
