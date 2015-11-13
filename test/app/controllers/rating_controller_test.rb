@@ -6,6 +6,6 @@ describe "/rating" do
   end
 
   it "should return list of ratings" do
-    last_response.body.split('RateTrip ratings').count.must_equal 2
+    last_response.body.split('Rate Ride ratings').count.must_equal 2
   end
 end

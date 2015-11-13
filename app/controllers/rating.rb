@@ -23,13 +23,13 @@ Ratetrip::App.controllers :rating do
     all_ratings = Rating.all.order('created_at DESC')
     @ratings = all_ratings.take(50)
     @result_summary = "#{@ratings.count} of #{all_ratings.count} ratings"
-    @title = 'RateTrip ratings'
+    @title = 'Rate Ride ratings'
     render 'rating/index'
   end
 
   get :new, map: '/:permit_number' do
     driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error! Could not look up driver for permit_number #{params[:permit_number]}" )
-    @title = "Rate This Trip"
+    @title = "Rate This Ride"
     @permit_number = driver.permit_number
     @driver = driver
 

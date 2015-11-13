@@ -6,6 +6,6 @@ describe "Controller" do
   end
 
   it "should return welcome message" do
-    last_response.body.split('How to use').count.must_equal 2
+    last_response.body.split('Instructions').count.must_equal 2
   end
 end

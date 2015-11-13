@@ -1,41 +1,41 @@
 .container-fluid
 	.row.rate-trip-row.top-row
-		.col-xs-3
+		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
 				%i.logo.icon.icon-taxi.icon-stack-1x
 
-		.col-xs-9
+		.col-xs-8
 			.title=@title
 
-	.container-fluid
-		=form_tag url(:rating, :create), class: 'rating_form' do
-			=hidden_field_tag :permit_number, value: @driver.permit_number
-			.row.rate-trip-row
-				.col-xs-5.driver-photo
-					=image_tag '/images/drivers/' + @driver.photo
-				.col-xs-7
-					.text-label.driver-name
-						=@driver.name
-					.text-label.permit-number
-						=@driver.permit_number
-			.row.rate-trip-row.rating-row
-				.col-xs-12
-					.stars
-						<input name="quality" id="star-rating" type="number" class="rating" data-min=0 data-max=5 data-step=1 data-stars=5 data-size="sm" data-showclear="false" data-showcaption="false" data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
+.container-fluid
+	=form_tag url(:rating, :create), class: 'rating_form' do
+		=hidden_field_tag :permit_number, value: @driver.permit_number
+		.row.rate-trip-row
+			.col-xs-4.driver-photo
+				=image_tag '/images/drivers/' + @driver.photo
+			.col-xs-8
+				.text-label.driver-name
+					=@driver.name
+				.text-label.permit-number
+					=@driver.permit_number
+		.row.rate-trip-row.rating-row
+			.col-xs-12
+				.stars
+					<input name="quality" id="star-rating" type="number" class="rating" data-min=0 data-max=5 data-step=1 data-stars=5 data-size="sm" data-showclear="false" data-showcaption="false" data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
 
-						%script{type: 'text/javascript'}
-							$("#star-rating").rating({});
+					%script{type: 'text/javascript'}
+						$("#star-rating").rating({});
 
-			.row.rate-trip-row.comment-row
-				.col-xs-12
-					= text_area_tag :comments, placeholder: 'Enter your comments about this trip', rows: 3
-			.row.rate-trip-row.done-button-row
-				.col-xs-12
-					= submit_tag "Done"
+		.row.rate-trip-row.comment-row
+			.col-xs-12
+				= text_area_tag :comments, placeholder: 'Enter your comments about this trip', rows: 3
+		.row.rate-trip-row.done-button-row
+			.col-xs-12
+				= submit_tag "Done"
 
-			.row.rate-trip-row.footer-row
-				.footer-title
-					%a{href: 'http://taxitalk.info'} TaxiTalk.info
-				.footer-subtitle
-					promoting better taxis
+		.row.rate-trip-row.footer-row
+			.footer-title
+				%a{href: 'http://taxitalk.info'} TaxiTalk.info
+			.footer-subtitle
+				promoting better taxis
