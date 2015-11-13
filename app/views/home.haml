@@ -1,5 +1,5 @@
 .container-fluid
-	.row.rate-trip-row.top-row
+	.row.rate-trip-row.top-row.gradient
 		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
@@ -8,28 +8,32 @@
 		.col-xs-8
 			.title
 				Instructions
-	.container-fluid
-		.row.rate-trip-row
-			.col-xs-3.left-column.qrcode-badge
-				= image_tag '/images/drivers/1229.png'
-			.col-xs-9
-				Scan the 'Rate This Ride' QR Code with a smartphone app during your taxi ride.
-				%br
-		.row.rate-trip-row
-			.col-xs-3.left-column.star-badge
-				%i.icon.icon-star.icon-stack-2x
-			.col-xs-9
-				Click a star icon to rate your ride based on overall quality.
-				%br
-		.row.rate-trip-row
-			.col-xs-3.left-column.button-badge
-				=button_tag 'Done', disabled: :disabled
-			.col-xs-9
-				Click done and that's it!
-				%br
-				%br
-		.row.rate-trip-row.footer-row
-			.footer-title
-				%a{href: 'http://taxitalk.info'} TaxiTalk.info
-			.footer-subtitle
-				promoting better taxis
+
+.container-fluid
+	.row.rate-trip-row
+		.col-xs-3.left-column.qrcode-badge
+			= image_tag '/images/drivers/1229.png'
+		.col-xs-9
+			Scan the 'Rate This Ride' QR Code with a smartphone app during your taxi ride.
+			%br
+	.row.rate-trip-row
+		.col-xs-3.left-column.star-badge
+			%i.icon.icon-star.icon-stack-2x
+		.col-xs-9
+			Click a star icon to rate your ride based on overall quality.
+			%br
+	.row.rate-trip-row
+		.col-xs-3.left-column
+			%a.btn.btn-primary{type: :submit, disabled: :disabled}
+				Done
+		.col-xs-9
+			Click done and that's it!
+			%br
+			%br
+
+%footer
+	.container-fluid.footer.footer-row.gradient
+		.footer-title
+			%a{href: 'http://taxitalk.info'} TaxiTalk.info
+		.footer-subtitle
+			promoting better taxis

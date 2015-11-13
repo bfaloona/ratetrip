@@ -1,5 +1,5 @@
 .container-fluid
-	.row.rate-trip-row.top-row
+	.row.rate-trip-row.top-row.gradient
 		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
@@ -8,22 +8,21 @@
 		.col-xs-8
 			.title.title-long.no-wrap=@title
 
-	.container-fluid
-		.row.rate-trip-row
-			%br
+.container-fluid
+	.row.rate-trip-row
+		.text-success
 			Thanks for rating your ride. We'll share your feedback with the driver.
 			%br
 			%br
-		.row.rate-trip-row
-			TaxiTalk.info is a blog and newsletter for individuals who want to improve the taxi industry.
-		.row.rate-trip-row
-			To receive posts by email
-			%a{href: 'http://taxitalk.info'}
-				SUBSCRIBE
-			%br
-			%br
-		.row.rate-trip-row.footer-row
-			.footer-title
-				TaxiTalk.info
-			.footer-subtitle
-				promoting better taxis
+	.row.rate-trip-row
+		TaxiTalk.info is a blog and newsletter for individuals who want to improve the taxi industry.
+	.row.rate-trip-row
+		To receive posts by email
+		%a{href: 'http://taxitalk.info'}
+			SUBSCRIBE
+%footer
+	.container-fluid.footer.footer-row.gradient
+		.footer-title
+			TaxiTalk.info
+		.footer-subtitle
+			promoting better taxis

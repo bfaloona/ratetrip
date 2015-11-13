@@ -1,5 +1,5 @@
 .container-fluid
-	.row.rate-trip-row.top-row
+	.row.rate-trip-row.top-row.gradient
 		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
@@ -11,7 +11,7 @@
 .container-fluid
 	=form_tag url(:rating, :create), class: 'rating_form' do
 		=hidden_field_tag :permit_number, value: @driver.permit_number
-		.row.rate-trip-row
+		.row.rate-trip-row.first-row
 			.col-xs-4.driver-photo
 				=image_tag '/images/drivers/' + @driver.photo
 			.col-xs-8
@@ -19,6 +19,8 @@
 					=@driver.name
 				.text-label.permit-number
 					=@driver.permit_number
+				.detail
+					SFMTA
 		.row.rate-trip-row.rating-row
 			.col-xs-12
 				.stars
@@ -29,13 +31,16 @@
 
 		.row.rate-trip-row.comment-row
 			.col-xs-12
-				= text_area_tag :comments, placeholder: 'Enter your comments about this trip', rows: 3
+				= text_area_tag :comments, placeholder: 'Comments (optional)', rows: 3
 		.row.rate-trip-row.done-button-row
 			.col-xs-12
-				= submit_tag "Done"
+				%input.btn.btn-primary{type: :submit, value: 'Done'}
+				%span.timestamp
+				%span.detail=Time.now.strftime('%b %e, %l:%M %p')
 
-		.row.rate-trip-row.footer-row
-			.footer-title
-				%a{href: 'http://taxitalk.info'} TaxiTalk.info
-			.footer-subtitle
-				promoting better taxis
+%footer
+	.container-fluid.footer.footer-row.gradient
+		.footer-title
+			%a{href: 'http://taxitalk.info'} TaxiTalk.info
+		.footer-subtitle
+			promoting better taxis
