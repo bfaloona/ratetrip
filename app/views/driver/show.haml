@@ -13,7 +13,7 @@
 		=hidden_field_tag :permit_number, value: @driver.permit_number
 		.row.rate-trip-row.first-row
 			.col-xs-4.driver-photo
-				=image_tag '/images/drivers/' + @driver.photo
+				=image_tag @driver.photo_path
 			.col-xs-8
 				.text-label.driver-name
 					=@driver.name

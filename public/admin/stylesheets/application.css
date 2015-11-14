@@ -351,3 +351,22 @@ footer p {
   }
 }
 /* -- End Application -- */
+
+
+.driver-photo img {
+  width: 100px;
+  height: 100px;
+}
+.qrcode img {
+  width: 100px;
+  height: 100px;
+}
+
+.photo-qrcode-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.inset-column {
+  padding-left: 0;
+}

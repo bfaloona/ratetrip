@@ -9,8 +9,17 @@ class Driver < ActiveRecord::Base
 
   before_save :generate_qr_code, on: [:create]
 
+  def photo_path
+    path = "/images/drivers/#{self.photo}"
+    if self.photo && File.exists?(Padrino.root('public') + path)
+      return path
+    else
+      return '/images/drivers/nophoto.jpg'
+    end
+  end
+
   def qrcode_path
-    path = '/images/drivers/' + self.permit_number.to_s + '.png'
+    path = "/images/drivers/#{self.permit_number}.png"
     if !File.exists? Padrino.root('public') + path
       self.generate_qr_code
       path

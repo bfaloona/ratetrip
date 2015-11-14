@@ -1,35 +1,52 @@
-- error = @driver.errors.include?(:name)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :name, :class => 'control-label'
-  .controls
-    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
-    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
-- error = @driver.errors.include?(:permit_number)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :permit_number, :class => 'control-label'
-  .controls
-    =f.text_field :permit_number, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:permit_number, :class => 'text-error') : pat(:example)
-- error = @driver.errors.include?(:email)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :email, :class => 'control-label'
-  .controls
-    =f.text_field :email, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:email, :class => 'text-error') : pat(:example)
-- error = @driver.errors.include?(:photo)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :photo, :class => 'control-label'
-  .controls
-    =f.text_field :photo, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:photo, :class => 'text-error') : pat(:example)
+.container-fluid
+	.row
+		- error = @driver.errors.include?(:name)
+		%fieldset.control-group{:class => error ? 'has-error' : ''}
+			=f.label :name, :class => 'control-label'
+			.controls
+				=f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+				%span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat('Full Name')
+.container-fluid
+	.row.photo-qrcode-row
+		.col-xs-6.inset-column
+			- error = @driver.errors.include?(:permit_number)
+			%fieldset.control-group{:class => error ? 'has-error' : ''}
+				=f.label :permit_number, :class => 'control-label'
+				.controls
+					=f.text_field :permit_number, :class => 'form-control input-large input-with-feedback'
+					%span.help-inline=error ? f.error_message_on(:permit_number, :class => 'text-error') : pat('Medallion number, ex: 9999')
+		.col-xs-6.qrcode
+			- if @driver.permit_number
+				.qrcode
+					= image_tag @driver.qrcode_path
 
-- if @driver.permit_number
-  .qrcode
-    = image_tag @driver.qrcode_path
+.container-fluid
+	.row
+		.col-xs-6.inset-column
+			- error = @driver.errors.include?(:photo)
+			%fieldset.control-group{:class => error ? 'has-error' : ''}
+				=f.label :photo, :class => 'control-label'
+				.controls
+					=f.text_field :photo, :class => 'form-control input-large input-with-feedback'
+					%span.help-inline=error ? f.error_message_on(:photo, :class => 'text-error') : pat('Name of jpg/png file. Displayed at 100x100px, ex: myname.jpg')
+		.col-xs-6.driver-photo
+			= image_tag @driver.photo_path
+			- if @driver.photo.nil? || !File.exists?(Padrino.root('public') + "/images/drivers/#{@driver.photo}")
+				.detail="photo '#{@driver.photo}' not found"
 
-.form-actions
-  =f.submit pat(:save), :class => 'btn btn-primary'
-  &nbsp;
-  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
-  &nbsp;
-  =link_to pat(:cancel), url(:drivers, :index), :class => 'btn btn-default'
+
+.container-fluid
+	.row
+		- error = @driver.errors.include?(:email)
+		%fieldset.control-group{:class => error ? 'has-error' : ''}
+			=f.label :email, :class => 'control-label'
+			.controls
+				=f.text_field :email, :class => 'form-control input-large input-with-feedback'
+				%span.help-inline=error ? f.error_message_on(:email, :class => 'text-error') : pat('email address, ex: example@gmail.com')
+
+		.form-actions
+			=f.submit pat(:save), :class => 'btn btn-primary'
+			&nbsp;
+			=f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+			&nbsp;
+			=link_to pat(:cancel), url(:drivers, :index), :class => 'btn btn-default'

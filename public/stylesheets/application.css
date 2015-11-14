@@ -40,10 +40,12 @@
 }
 
 .driver-photo img {
-    width: 90px;
+    width: 100px;
+    height: 100px;
 }
 .qrcode img {
-    height: 90px;
+    width: 100px;
+    height: 100px;
 }
 
 .qrcode-badge img {
