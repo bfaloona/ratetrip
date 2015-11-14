@@ -26,7 +26,7 @@
 # override these settings in the subapps as needed.
 #
 Padrino.configure_apps do
-  # enable :sessions
+  enable :sessions
   set :session_secret, 'cafc0c2428b049facc0a9e71d3316068882d0c228c8282a9de4dfbd0112d8de0'
   set :protection, :except => :path_traversal
   set :protect_from_csrf, true
@@ -35,5 +35,5 @@ end
 
 # Mounts the core application for this project
 
-Padrino.mount("Ratetrip::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
-Padrino.mount('Ratetrip::App', :app_file => Padrino.root('app/app.rb')).to('/')
+Padrino.mount("Rateride::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
+Padrino.mount('Rateride::App', :app_file => Padrino.root('app/app.rb')).to('/')

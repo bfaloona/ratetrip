@@ -1,4 +1,4 @@
-module Ratetrip
+module Rateride
   class Admin < Padrino::Application
     use ConnectionPoolManagement
     register Padrino::Mailer

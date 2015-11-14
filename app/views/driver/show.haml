@@ -1,33 +1,41 @@
-.container-fluid
-	.row.rate-trip-row.top-row.gradient
-		.col-xs-4
-			%span.logo.icon-stack.icon-lg
-				%i.logo.icon.icon-comment-o.icon-stack-2x
-				%i.logo.icon.icon-taxi.icon-stack-1x
+!!! 5
+%html{lang: 'en', itemscope: ''}
+	%head
+		%title= @title.present? ? @title : 'Rate Ride'
+		%script{src: 'https://use.fonticons.com/b2523290.js'}
+		= javascript_include_tag 'jquery.min', 'bootstrap.min'
+		= stylesheet_link_tag 'normalize', 'bootstrap.min', 'sticky-footer'
+		= stylesheet_link_tag 'driver-card'
+		= yield_content :include
 
-		.col-xs-8
-			.title=@title
+	%body
 
-.container-fluid
-	=form_tag url(:rating, :create), class: 'rating_form' do
-		=hidden_field_tag :permit_number, value: @driver.permit_number
-		.row.rate-trip-row.first-row
-			.col-xs-4.driver-photo
-				=image_tag @driver.photo_path
-			.col-xs-8
-				.text-label.driver-name
-					=@driver.name
-				.text-label.permit-number
-					=@driver.permit_number
-				.detail
-					SFMTA
-		.row.rate-trip-row.rating-row
-			.col-xs-12
-				%img{src: @driver.qrcode_path, height: 215}
+		.driver-card
+			.container-fluid
+				.row.card-row.top-row.gradient
+					.col-xs-3
+						%span.logo.icon-stack.icon-lg
+							%i.logo.icon.icon-comment-o.icon-stack-2x
+							%i.logo.icon.icon-taxi.icon-stack-1x
 
-%footer
-	.container-fluid.footer.footer-row.gradient
-		.footer-title
-			%a{href: 'http://taxitalk.info'} TaxiTalk.info
-		.footer-subtitle
-			promoting better taxis
+					.col-xs-9
+						.title=@title
+
+			.container-fluid
+				=form_tag url(:rating, :create), class: 'rating_form' do
+					=hidden_field_tag :permit_number, value: @driver.permit_number
+					.row.card-row.first-row
+						.col-xs-4.driver-photo
+							=image_tag @driver.photo_path
+						.col-xs-8
+							.text-label.driver-name
+								=@driver.name
+							.text-label.permit-number
+								=@driver.permit_number
+					.row.card-row
+						.message
+							%b Scan the code to rate your ride
+						.qrcode
+							%img{src: @driver.qrcode_path}
+						.driver-url
+							="http://ratethisride.us/#{@driver.permit_number}"

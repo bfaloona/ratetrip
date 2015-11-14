@@ -38,12 +38,12 @@
 #
 # and then all delivered mail will use these settings unless otherwise specified.
 #
-Ratetrip::App.mailer :rating do
+Rateride::App.mailer :rating do
 
   email :notify do |driver_name, quality, comments|
-    from 'ratetrip@taxitalk.info'
+    from 'ratethisride@taxitalk.info'
     to   'wade@wadehudson.net,brandon@faloona.net'
-    subject 'Taxi Trip Was Rated!'
+    subject 'A Ride Was Rated!'
     locals  driver_name: driver_name, quality: quality, comments: comments
     content_type 'text/html'       # optional, defaults to plain/text
     render  'rating'

@@ -1,107 +1,53 @@
 
 .body {
-    font-size: 36px;
+    font-size: 11px;
 }
 
-.ratings-list {
-    padding: 10px;
+.driver-card {
+    height: 3.375in;
+    width: 2.35in;
 }
 
-.ratings-list td {
-    padding: 5px;
-}
-
-.ratings-list th {
-    font-weight: bold;
-    padding-right: 15px;
+.top-row {
+    color: #EEE;
+    height: 4.3em;
 }
 
 .logo {
-    margin-top: -4px;
+    margin-left: -4px;
+    margin-top: -2px;
     width: auto;
 }
 
-.rate-row {
-    font-size: 1.3em;
-    padding: 10px 5px;
-}
-
-.thanks-row {
-    text-align: center;
-}
-
-.text-success {
-    padding: 25px 15px;
-    font-weight: bold;
-}
-
-.left-column {
+.card-row {
+    padding: 5px 0 5px 0;
 }
 
 .first-row {
-    padding-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-
-.rating-row {
-    font-size: 83%;
-}
-
 .driver-photo img {
-    width: 100px;
-    height: 100px;
-}
-.qrcode img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
+    margin-left: -10px;
 }
 
-.qrcode-badge i {
-    color: #BBB;
+.driver-name {
+    font-size: 1.2em;
 }
 
-.star-badge i {
-    text-align: left;
-    color: #DDD;
-}
-
-.button-badge a {
-    color: #DDD;
-}
-
-.button-badge input {
-    font-size: 70%;
-}
-
-.text-label {
-    font-size: 0.7em;
-    font-weight: bold;
-}
-
-.text-label.driver-name {
-    font-size: 0.9em;
-    font-weight: bold;
-}
-
-.text-label.permit-number {
-    font-size: 2em;
+.permit-number {
+    font-size: 1.5em;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     color: #555;
 }
 
-.comment-row textarea {
-    width: 100%;
-    font-size: 0.85em;
+.message {
+    text-align: center;
 }
 
-.done-button-row {
-    padding-bottom: 20px;
-}
-
-.timestamp {
-    padding-left: 30px;
-}
 .detail {
-    font-size: 0.8em;
 }
 
 .icon-comment-o {
@@ -117,32 +63,27 @@
 .title {
     font-weight: bold;
     text-align: left;
-    font-size: 1.4em;
-    padding-top: 0.6em;
-    margin-left: -10px;
-    margin-top: -6px;
-}
-
-.title-long {
     font-size: 1.2em;
-    padding-top: 0.7em;
+    padding-top: 0.8em;
+    margin-left: 0;
 }
 
-.footer-row {
-    padding: 5px;
-    font-size: 90%;
+.title-column {
+    padding-right: 0;
+}
+
+.qrcode img {
+    width: 175px;
+    height: 175px;
+}
+
+.qrcode {
     text-align: center;
-    /*position: absolute;*/
-    margin-bottom: 0;
+    padding: 0;
 }
 
-.footer-subtitle {
-    font-weight: bold;
-}
-
-.top-row {
-    color: #EEE;
-    height: 4.3em;
+.driver-url {
+    text-align: center;
 }
 
 .gradient a:hover {
@@ -165,11 +106,4 @@ background-color: #0278ed;
     /* IE10+ */
     background-image: repeating-linear-gradient(to top left,rgb(0, 143, 244) 0%,rgb(3, 96, 229) 100%);
     background-image: -ms-repeating-linear-gradient(bottom right,rgb(0, 143, 244) 0%,rgb(3, 96, 229) 100%);
-}
-
-/* IE8- CSS hack */
-@media \0screen\,screen\9 {
-    .gradient {
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff0360e5",endColorstr="#ff008ff4",GradientType=0);
-    }
 }

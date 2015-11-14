@@ -1,4 +1,4 @@
-Ratetrip::Admin.controllers :statuses do
+Rateride::Admin.controllers :statuses do
   get :index do
     @title = "Statuses"
     @statuses = Status.all

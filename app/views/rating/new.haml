@@ -1,5 +1,5 @@
 .container-fluid
-	.row.rate-trip-row.top-row.gradient
+	.row.rate-row.top-row.gradient
 		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
@@ -11,7 +11,7 @@
 .container-fluid
 	=form_tag url(:rating, :create), class: 'rating_form' do
 		=hidden_field_tag :permit_number, value: @driver.permit_number
-		.row.rate-trip-row.first-row
+		.row.rate-row.first-row
 			.col-xs-4.driver-photo
 				=image_tag @driver.photo_path
 			.col-xs-8
@@ -21,7 +21,7 @@
 					=@driver.permit_number
 				.detail
 					SFMTA
-		.row.rate-trip-row.rating-row
+		.row.rate-row.rating-row
 			.col-xs-12
 				.stars
 					<input name="quality" id="star-rating" type="number" class="rating" data-min=0 data-max=5 data-step=1 data-stars=5 data-size="sm" data-showclear="false" data-showcaption="false" data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
@@ -29,10 +29,10 @@
 					%script{type: 'text/javascript'}
 						$("#star-rating").rating({});
 
-		.row.rate-trip-row.comment-row
+		.row.rate-row.comment-row
 			.col-xs-12
 				= text_area_tag :comments, placeholder: 'Comments (optional)', rows: 3
-		.row.rate-trip-row.done-button-row
+		.row.rate-row.done-button-row
 			.col-xs-12
 				%input.btn.btn-primary{type: :submit, value: 'Done'}
 				%span.timestamp

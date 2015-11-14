@@ -1,4 +1,4 @@
-Ratetrip::Admin.controllers :ratings do
+Rateride::Admin.controllers :ratings do
   get :index do
     @title = "Ratings"
     @ratings = Rating.all

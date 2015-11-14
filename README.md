@@ -1,2 +1,2 @@
-# ratetrip
-Rate your taxi trip
+# Rateride
+Rate your taxi ride

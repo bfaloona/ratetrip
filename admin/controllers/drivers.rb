@@ -1,4 +1,4 @@
-Ratetrip::Admin.controllers :drivers do
+Rateride::Admin.controllers :drivers do
   get :index do
     @title = "Drivers"
     @drivers = Driver.all

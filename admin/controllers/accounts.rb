@@ -1,4 +1,4 @@
-Ratetrip::Admin.controllers :accounts do
+Rateride::Admin.controllers :accounts do
   get :index do
     @title = "Accounts"
     @accounts = Account.all

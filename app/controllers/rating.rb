@@ -1,4 +1,4 @@
-Ratetrip::App.controllers :rating do
+Rateride::App.controllers :rating do
   
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'

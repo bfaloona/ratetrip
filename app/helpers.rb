@@ -1,6 +1,6 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 
-module Ratetrip
+module Rateride
   class App
     module Helper
       # def simple_helper_method

@@ -8,9 +8,9 @@ class MiniTest::Spec
   # You can use this method to custom specify a Rack app
   # you want rack-test to invoke:
   #
-  #   app Ratetrip::App
-  #   app Ratetrip::App.tap { |a| }
-  #   app(Ratetrip::App) do
+  #   app Rateride::App
+  #   app Rateride::App.tap { |a| }
+  #   app(Rateride::App) do
   #     set :foo, :bar
   #   end
   #

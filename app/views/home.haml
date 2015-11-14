@@ -1,5 +1,5 @@
 .container-fluid
-	.row.rate-trip-row.top-row.gradient
+	.row.rate-row.top-row.gradient
 		.col-xs-4
 			%span.logo.icon-stack.icon-lg
 				%i.logo.icon.icon-comment-o.icon-stack-2x
@@ -10,19 +10,19 @@
 				Instructions
 
 .container-fluid
-	.row.rate-trip-row
+	.row.rate-row
 		.col-xs-3.left-column.qrcode-badge
-			= image_tag '/images/drivers/1229.png'
+			%i.icon.icon-qrcode.icon-3x
 		.col-xs-9
 			Scan the 'Rate This Ride' QR Code with a smartphone app during your taxi ride.
 			%br
-	.row.rate-trip-row
+	.row.rate-row
 		.col-xs-3.left-column.star-badge
-			%i.icon.icon-star.icon-stack-2x
+			%i.icon.icon-star.icon-3x
 		.col-xs-9
 			Click a star icon to rate your ride based on overall quality.
 			%br
-	.row.rate-trip-row
+	.row.rate-row
 		.col-xs-3.left-column
 			%a.btn.btn-primary{type: :submit, disabled: :disabled}
 				Done
