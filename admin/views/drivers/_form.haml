@@ -28,12 +28,9 @@
 				=f.label :photo, :class => 'control-label'
 				.controls
 					=f.text_field :photo, :class => 'form-control input-large input-with-feedback'
-					%span.help-inline=error ? f.error_message_on(:photo, :class => 'text-error') : pat('Name of jpg/png file. Displayed at 100x100px, ex: myname.jpg')
+					%span.help-inline=error ? f.error_message_on(:photo, :class => 'text-error') : pat('Local filename, or url of jpg/png file. Displayed at 100x100px, ex: myname.jpg or http://server.org/path/photo.jpg')
 		.col-xs-6.driver-photo
 			= image_tag @driver.photo_path
-			- if @driver.photo.nil? || !File.exists?(Padrino.root('public') + "/images/drivers/#{@driver.photo}")
-				.detail="photo '#{@driver.photo}' not found"
-
 
 .container-fluid
 	.row

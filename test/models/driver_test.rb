@@ -6,7 +6,7 @@ describe "Driver Model" do
 
     # Clean up
     Driver.delete_all
-    qrcode_file = PADRINO_ROOT + '/public/images/drivers/736288261349.png'
+    qrcode_file = PADRINO_ROOT + '/public/images/qrcodes/736288261349.png'
     File.delete qrcode_file if File.exists?( qrcode_file )
     File.exists?(qrcode_file).must_equal false
 
@@ -28,7 +28,7 @@ describe "Driver Model" do
   end
 
   it 'can create qrcode image file' do
-    qrcode_file = File.expand_path(File.dirname(__FILE__) + '/../../public/images/drivers/736288261349.png')
+    qrcode_file = File.expand_path(File.dirname(__FILE__) + '/../../public/images/qrcodes/736288261349.png')
     assert File.exists?(qrcode_file)
 
     assert( File.exists?( File.expand_path(File.dirname(__FILE__) + '/../../public/' + @driver.qrcode_path)),
@@ -65,6 +65,47 @@ describe "Driver validation" do
     assert_equal [], @driver.errors.keys
     @driver.save
     assert true, '@driver.save failed'
+  end
+
+end
+
+describe "Driver photo_path" do
+
+  before do
+    # Clean up
+    Driver.delete_all
+    @driver = Driver.new
+    @driver.name = 'Test User'
+    @driver.permit_number = '736288261349'
+  end
+
+  it 'returns value when photo is found' do
+    @driver.photo = 'whudson.jpg'
+    @driver.save
+    @driver.photo_path.must_equal '/images/drivers/whudson.jpg'
+  end
+
+  it 'returns nophoto.jpg when photo is blank' do
+    @driver.save
+    @driver.photo_path.must_equal '/images/drivers/nophoto.jpg'
+  end
+
+  it 'returns nophoto.jpg when photo is not found' do
+    @driver.photo = 'blah'
+    @driver.save
+    @driver.photo_path.must_equal '/images/drivers/nophoto.jpg'
+  end
+
+  it 'returns value when set to http URL' do
+    @driver.photo = 'http://foo.jpg'
+    @driver.save
+    @driver.photo_path.must_equal 'http://foo.jpg'
+  end
+
+  it 'returns value when set to https URL' do
+    @driver.photo = 'https://foo.jpg'
+    @driver.save
+    @driver.photo_path.must_equal 'https://foo.jpg'
   end
 
 end
