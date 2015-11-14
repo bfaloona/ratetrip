@@ -37,8 +37,12 @@
     text-align: center;
 }
 
+.icon-check-circle {
+    color: green;
+}
+
 .text-success {
-    padding: 25px 15px;
+    padding: 15px;
     font-weight: bold;
 }
 
@@ -63,12 +67,12 @@
 }
 
 .qrcode-badge i {
-    color: #BBB;
+    color: #777;
 }
 
 .star-badge i {
     text-align: left;
-    color: #DDD;
+    color: #AAA;
 }
 
 .button-badge a {
@@ -98,6 +102,9 @@
     color: #555;
 }
 
+.home-row {
+    height: 6em;
+}
 .comment-row textarea {
     width: 100%;
     font-size: 0.85em;
