@@ -2,8 +2,13 @@ module Rateride
   class App < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
-
     enable :sessions
+
+    require 'better_errors'
+    configure :development do
+      use BetterErrors::Middleware
+      BetterErrors.application_root = Padrino.mounted_root
+    end
 
     if Padrino.env.to_s == 'production'
       set :delivery_method, smtp: {

@@ -5,6 +5,13 @@ module Rateride
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
 
+    require 'better_errors'
+    configure :development do
+      use BetterErrors::Middleware
+      BetterErrors.application_root = Padrino.mounted_root
+    end
+
+
     ##
     # Application configuration options
     #

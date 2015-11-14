@@ -38,5 +38,6 @@ group :test do
   # pry for debugging
   gem 'pry', require: false
   gem 'pry-padrino', require: false
-
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
