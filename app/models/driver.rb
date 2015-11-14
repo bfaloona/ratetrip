@@ -1,8 +1,9 @@
 class Driver < ActiveRecord::Base
   has_many :ratings, dependent: :delete_all
 
-  validates_presence_of :name
-  validates_presence_of :permit_number
+  validates_presence_of   :name
+  validates_length_of     :name, :within => 3..25
+  validates_presence_of   :permit_number
   validates_uniqueness_of :permit_number
 
   validates_presence_of :qrcode_path
