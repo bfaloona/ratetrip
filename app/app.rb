@@ -6,7 +6,7 @@ module Rateride
 
     set :site_domain, 'ratethisride.us'
 
-    require 'better_errors'
+    require 'better_errors' if Padrino.env == :development
     configure :development do
       use BetterErrors::Middleware
       BetterErrors.application_root = Padrino.mounted_root
