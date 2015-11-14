@@ -38,4 +38,4 @@
 						.qrcode
 							%img{src: @driver.qrcode_path}
 						.driver-url
-							="http://ratethisride.us/#{@driver.permit_number}"
+							="http://#{Rateride::App.settings.site_domain}/#{@driver.permit_number}"

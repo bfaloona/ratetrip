@@ -44,7 +44,7 @@ class Driver < ActiveRecord::Base
   protected
     def generate_qr_code
       require 'rqrcode'
-      qrcode = RQRCode::QRCode.new("http://ratethisride.us/#{self.permit_number}")
+      qrcode = RQRCode::QRCode.new("http://#{Rateride::App.settings.site_domain}/#{self.permit_number}")
       path = "/images/qrcodes/#{self.permit_number}.png"
       qrcode.as_png(file: Padrino.root('public') + path)
     end

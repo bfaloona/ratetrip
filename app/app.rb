@@ -4,6 +4,8 @@ module Rateride
     register Padrino::Helpers
     enable :sessions
 
+    set :site_domain, 'ratethisride.us'
+
     require 'better_errors'
     configure :development do
       use BetterErrors::Middleware
