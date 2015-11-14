@@ -1,10 +1,10 @@
 Rateride::App.controllers :rating do
 
   get :index do
-    all_ratings = Rating.all.order('created_at DESC')
-    @ratings = all_ratings.take(50)
-    @result_summary = "#{@ratings.count} of #{all_ratings.count} ratings"
-    @title = 'Rate Ride ratings'
+    all_ratings = Rating.all.order('quality DESC, created_at DESC')
+    @ratings = all_ratings.take(5)
+    @result_summary = "#{@ratings.count} ratings"
+    @title = 'Recent Ratings'
     render 'rating/index'
   end
 
@@ -33,7 +33,7 @@ Rateride::App.controllers :rating do
       raise 'Error creating rating'
     end
 
-    deliver( :rating, :notify, driver.name, @rating.quality, @rating.comments)
+    deliver( :rating, :notify, driver, @rating.quality, @rating.comments)
     @rating.delivered = true
     @rating.save
 

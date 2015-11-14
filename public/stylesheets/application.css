@@ -7,13 +7,20 @@
     padding: 10px;
 }
 
+.ratings-list i.icon-star {
+    font-size: 0.6em;
+}
+
 .ratings-list td {
     padding: 5px;
 }
 
-.ratings-list th {
-    font-weight: bold;
-    padding-right: 15px;
+.ratings-list .quality {
+    width: 4.5em;
+}
+
+.comment-text {
+    font-size: 1em;
 }
 
 .logo {
@@ -72,6 +79,9 @@
     font-size: 70%;
 }
 
+.driver {
+    font-size: 0.65em;
+}
 .text-label {
     font-size: 0.7em;
     font-weight: bold;

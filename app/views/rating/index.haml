@@ -1,28 +1,37 @@
-.result-summary
-	=@result_summary
+.container-fluid
+	.row.rate-row.top-row.gradient
+		.col-xs-4
+			%span.logo.icon-stack.icon-lg
+				%i.logo.icon.icon-comment-o.icon-stack-2x
+				%i.logo.icon.icon-taxi.icon-stack-1x
 
+		.col-xs-8
+			.title.title-long.no-wrap=@title
 
-- if @ratings.empty?
-	.empty-table-message
-		well, there are no ratings to display.
-- else
+.container-fluid
+	.row.rate-row
+		.detail
 
-	%table.ratings-list
-		%thead
-			%tr
-				%th.header Driver
-				%th.header Rating
-				%th.header Comments
-				%th.header Suggestions
+			=@result_summary
 
-		%tbody
-			- @ratings.each_with_index do |rating, index|
+		- if @ratings.empty?
+			.empty-table-message
+				well, there are no ratings to display.
+		- else
 
-				%tr{class: (index.even? ? 'even' : 'odd')}
-					%td.driver=rating.driver.name
-					%td.quality=rating.quality
-					%td.comment-text=rating.comments
-					%td.comment-text=rating.suggestions
+			%table.ratings-list
+				%tbody
+					- @ratings.each_with_index do |rating, index|
+
+						%tr{class: (index.even? ? 'even' : 'odd')}
+							%td
+								.quality
+									-rating.quality.times do
+										%i.icon.icon-star
+
+								.driver=rating.driver.name
+
+							%td.comment-text=rating.comments
 
 %footer
 	.container-fluid.footer.footer-row.gradient
