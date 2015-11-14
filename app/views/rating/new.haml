@@ -24,7 +24,9 @@
 		.row.rate-row.rating-row
 			.col-xs-12
 				.stars
-					<input name="quality" id="star-rating" type="number" class="rating" data-min=0 data-max=5 data-step=1 data-stars=5 data-size="sm" data-showclear="false" data-showcaption="false" data-symbol="&#xf00f;" data-glyphicon="false" data-rating-class="icon icon-star">
+					%input.input-with-feedback{name: "quality", id: "star-rating", type: "number", class: "rating", 'data-min': 0,
+					 'data-max': 5, 'data-step': 1, 'data-stars': 5, 'data-size': "lg", 'data-show-clear': 'false',
+					 'data-show-caption': "false", 'data-symbol': "&#xf00f;".html_safe, 'data-glyphicon': "false", 'data-rating-class': "icon icon-star"}
 
 					%script{type: 'text/javascript'}
 						$("#star-rating").rating({});
