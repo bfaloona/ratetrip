@@ -1,0 +1,71 @@
+!!!
+%html{lang: "en", "xmllang": "en", xmlns: "http//www.w3.org/1999/xhtml"}
+	%head
+		%meta{content: "text/html; charset=UTF-8", "http-equiv": "content-type"}/
+		%title Rate This Ride: Application Error (400)
+		:css
+			body {
+				background-color: #fff;
+				color: #666;
+				text-align: center;
+				font-family: arial, sans-serif;
+			}
+			div.dialog {
+				width: 25em;
+				padding: 0 4em;
+				margin: 4em auto 0 auto;
+				border: 1px solid #ccc;
+				border-right-color: #999;
+				border-bottom-color: #999;
+			}
+			h1 {
+				font-size: 100%;
+				color: #f00;
+				line-height: 1.5em;
+			}
+
+
+	%body
+		.container
+			.row
+				%br
+				%br
+				%i.icon.icon-question-circle.icon-4x
+				%br
+				%br
+				.text-info
+					Hmm. Your request could not be completed
+					%br
+					%br
+					%br
+					%br
+			.row
+				.col-xs-3.text-right
+					%i.icon.icon-qrcode.icon-2x
+					%br
+					%br
+				.col-xs-9.text-left
+					Re-scan the driver's QR Code
+					%br
+					%br
+			.row
+				.col-xs-3.text-right
+					%i.icon.icon-link.icon-2x
+					%br
+					%br
+				.col-xs-9.text-left
+					Re-enter the driver's
+					%a{href: '/'} RateThisRide.us
+					URL
+					%br
+					%br
+			.row
+				.col-xs-3.text-right
+					%i.icon.icon-envelope.icon-2x
+					%br
+					%br
+				.col-xs-9.text-left
+					Subscribe to
+					%a{href: 'http://taxitalk.info/'}TaxiTalk.info
+					%br
+					%br

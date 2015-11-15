@@ -10,11 +10,14 @@ Rateride::App.controllers :rating do
 
   get :new, map: '/:permit_number' do
     driver = Driver.where(permit_number: params[:permit_number])[0] rescue( halt 500, "Error! Could not look up driver for permit_number #{params[:permit_number]}" )
-    @title = "Rate This Ride"
-    @permit_number = driver.permit_number
-    @driver = driver
-
-    render 'rating/new', layout: :application
+    if driver.nil?
+      render 'errors/400'
+    else
+      @title = "Rate This Ride"
+      @permit_number = driver.permit_number
+      @driver = driver
+      render 'rating/new', layout: :application
+    end
   end
 
   post :create, csrf_protection: false   do
